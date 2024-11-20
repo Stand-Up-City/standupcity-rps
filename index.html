@@ -14,9 +14,9 @@
     <main>
       <div class="px-4 py-5 my-5 text-center">
 
-        <h1 class="display-5 fw-bold text-body-emphasis">🤜🏻 🫱🏾✌🏼</h1>
+        <h1 class="display-1 fw-bold text-body-emphasis">🤜🏻 🫱🏾✌🏼</h1>
         <br>
-        <div class="input-group flex-nowrap">
+        <div id="input-group" class="input-group flex-nowrap">
           <span class="input-group-text" id="addon-wrapping">
             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M440-280H280q-83 0-141.5-58.5T80-480q0-83 58.5-141.5T280-680h160v80H280q-50 0-85 35t-35 85q0 50 35 85t85 35h160v80ZM320-440v-80h320v80H320Zm200 160v-80h160q50 0 85-35t35-85q0-50-35-85t-85-35H520v-80h160q83 0 141.5 58.5T880-480q0 83-58.5 141.5T680-280H520Z"/></svg>
           </span>
@@ -33,8 +33,8 @@
         <div id="webcam-container"></div>
         <br>
         <br>
-        <h1 id="move-pc" class="display-5 fw-bold text-body-emphasis"></h1>
-        <h1 id="move-you" class="display-5 fw-bold text-body-emphasis"></h1>
+        <h1 id="move-pc" class="display-9 fw-bold text-body-emphasis"></h1>
+        <h1 id="move-you" class="display-4 fw-bold text-body-emphasis"></h1>
         <br>
       </div>
     </main>
@@ -43,7 +43,7 @@
   </body>
 
   <script type="text/javascript">
-    // Enrico, test model: https://teachablemachine.withgoogle.com/models/eJB-NvpZx/
+    // Test model: https://teachablemachine.withgoogle.com/models/eJB-NvpZx/
     let URL = "";
     let trashold = 0.80;
     let countdown = 3;
@@ -60,6 +60,7 @@
       if (isValidHttpUrl(URL)) {
 
         document.getElementById('startbtn').remove();
+        document.getElementById('input-group').remove();
         const modelURL = URL + "model.json";
         const metadataURL = URL + "metadata.json";
 
@@ -114,9 +115,8 @@
               // gesture recognized and new, randomize computer choice
               let randMove = Math.floor(Math.random() * (labels.length-1));
               
-              // webcam.stop();
-              document.getElementById("move-pc").innerHTML = "Mossa del computer: " + labels[randMove+1];
-              document.getElementById("move-you").innerHTML = "Mossa tua: " + classPrediction;
+              document.getElementById("move-pc").innerHTML = "🤖 AI: " + labels[randMove+1];
+              document.getElementById("move-you").innerHTML = "❤ Tu: " + classPrediction;
               oldIndex = i;
 
               // await new Promise(r => setTimeout(r, 500)); // oneliner to sleep
